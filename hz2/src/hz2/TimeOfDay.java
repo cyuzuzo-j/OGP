@@ -19,33 +19,33 @@ public class TimeOfDay {
 		}
 		
 		/**
-		 * @throws IllegalArgumentException | !(0 <= uur && uur <= 23)
+		 * @throws IllegalArgumentException | (0 > uur || uur > 23)
 		 * @post   | this.getHour() == uur
 		 */
 		public void setHour(int uur){
-			if(!(0 <= uur && uur <= 23)) {
+			if( 0 > uur || uur > 23) {
 				throw new IllegalArgumentException("0<=uur <= 23");}
 			this.uur = uur;
 		}
 		/**
-		 * @throws IllegalArgumentException | !(0 <= minuten && minuten <= 59)
+		 * @throws IllegalArgumentException |  0 > minuten || minuten > 59
 		 * @post   | this.getMinutes() == minuten
 		 */
 		public void setMinutes(int minuten){
-			if(!(0 <= minuten && minuten <= 60)) {
+			if( 0 > minuten || minuten > 59) {
 				throw new IllegalArgumentException("0<=minuten <= 59");}
 			this.minuten = minuten;
 		}
 		//constructor
 		/**
-		 * @throws IllegalArgumentException | !(0 <= uur && uur <= 23)
-		 * @throws IllegalArgumentException | !(0 <= minuten && minuten <= 59)
+		 * @throws IllegalArgumentException | 0 > uur || uur > 23
+		 * @throws IllegalArgumentException | 0 > minuten || minuten > 59
 		 * @post   | this.getHour() == uur && this.getMinutes() == minuten
 		 */
 		public TimeOfDay(int uur,int minuten){
-			if(!(0 <= uur && uur <= 23)) {
+			if(0 > uur || uur > 23) {
 					throw new IllegalArgumentException("0<=uur <= 23");}
-			if(!(0 <= minuten && minuten <= 59)) {
+			if( 0 > minuten || minuten > 59) {
 				throw new IllegalArgumentException("0<=minuten <= 59");}
 			this.uur = uur;
 			this.minuten = minuten;

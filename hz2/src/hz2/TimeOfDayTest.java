@@ -8,6 +8,7 @@ class TimeOfDayTest {
 
 	@Test
 	void test() {
+
 		TimeOfDay hetuur = new TimeOfDay(5,3);
 		assert hetuur.getHour() == 5;
 		assert hetuur.getMinutes()  == 3;
@@ -17,10 +18,10 @@ class TimeOfDayTest {
 		assert hetuur.getMinutes()  == 20;
 		assertThrows(IllegalArgumentException.class, () -> hetuur.setHour(39));
 		assertThrows(IllegalArgumentException.class, () -> hetuur.setHour(-10));
-		assertThrows(IllegalArgumentException.class, () -> hetuur.setMinutes(39));
-		assertThrows(IllegalArgumentException.class, () -> hetuur.setMinutes(-5));
+		assertThrows(IllegalArgumentException.class, () -> hetuur.setMinutes(-20));
+		assertThrows(IllegalArgumentException.class, () -> hetuur.setMinutes(61));
 		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(5,-5));
-		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(5,25));
+		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(5,65));
 		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(-5,25));
 		assertThrows(IllegalArgumentException.class, () -> new TimeOfDay(25,25));
 	}
