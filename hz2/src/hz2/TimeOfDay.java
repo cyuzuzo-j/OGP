@@ -5,36 +5,38 @@ package hz2;
 * */
 public class TimeOfDay {
 		/**
-		 * @invar | (0 <= uur && uur <= 23)
-		 * @invar | (0 <= minuten && minuten <= 59)
+
+		 * @invar | (0<=minutesSinceMidnight && minutesSinceMidnight<60*24) 
 		 */
-		private int uur;
-		private int minuten;
+
+		private int minutesSinceMidnight;
 		
 		public int getHour(){
-			return uur;
+			return minutesSinceMidnight/60;
 		}
 		public int getMinutes(){
-			return minuten;
+			return minutesSinceMidnight%60;
 		}
 		
 		/**
 		 * @throws IllegalArgumentException | (0 > uur || uur > 23)
+		 * @mutates | this
 		 * @post   | this.getHour() == uur
 		 */
 		public void setHour(int uur){
 			if( 0 > uur || uur > 23) {
 				throw new IllegalArgumentException("0<=uur <= 23");}
-			this.uur = uur;
+			this.minutesSinceMidnight = uur*60 + getMinutes();
 		}
 		/**
 		 * @throws IllegalArgumentException |  0 > minuten || minuten > 59
+		 * @mutates | this
 		 * @post   | this.getMinutes() == minuten
 		 */
 		public void setMinutes(int minuten){
 			if( 0 > minuten || minuten > 59) {
 				throw new IllegalArgumentException("0<=minuten <= 59");}
-			this.minuten = minuten;
+			this.minutesSinceMidnight = getHour()*60 + minuten;
 		}
 		//constructor
 		/**
@@ -47,8 +49,7 @@ public class TimeOfDay {
 					throw new IllegalArgumentException("0<=uur <= 23");}
 			if( 0 > minuten || minuten > 59) {
 				throw new IllegalArgumentException("0<=minuten <= 59");}
-			this.uur = uur;
-			this.minuten = minuten;
+			this.minutesSinceMidnight = uur*60 +minuten; 
 		}
 		
 }
